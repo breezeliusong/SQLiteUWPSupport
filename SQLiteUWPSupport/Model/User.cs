@@ -9,8 +9,8 @@ namespace SQLiteUWPSupport.Model
 {
     public class User
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        //[PrimaryKey, AutoIncrement]
+        //public int Id { get; set; }
         [NotNull]
         public string Username { get; set; }
         [NotNull]

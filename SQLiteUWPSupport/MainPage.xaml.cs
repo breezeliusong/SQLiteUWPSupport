@@ -25,21 +25,22 @@ namespace SQLiteUWPSupport
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        SQLite.Net.SQLiteConnection conn;
+        string path;
+
         public MainPage()
         {
             this.InitializeComponent();
             CreateDatabase();
             CreateTable();
+            
         }
-
-        SQLite.Net.SQLiteConnection conn;
-        string path;
-
 
         private void CreateDatabase()
         {
             path = Path.Combine(Windows.Storage.ApplicationData.
-  Current.LocalFolder.Path, "Userdb.sqlite");
+                   Current.LocalFolder.Path, "MyUserDatabase.sqlite");
 
              conn = new SQLite.Net.SQLiteConnection(new
              SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
@@ -48,10 +49,23 @@ namespace SQLiteUWPSupport
         private void CreateTable()
         {
             conn.CreateTable<User>();
-
             //get table name
-            string name = conn.Table<User>().Table.TableName;
+            //string name = conn.Table<User>().Table.TableName;
         }
+
+        private void CreateTrigger()
+        {
+            conn.Execute("CREATE TRIGGER mytrigger AFTER INSERT ON User \r\n BEGIN \r\n INSERT INTO User VALUES('xiao zhang','456'); \r\n END;");
+        }
+
+        private void CreateTrigger(object sender, RoutedEventArgs e)
+        {
+            CreateTrigger();
+        }
+
+
+
+
 
         private void Insert(object sender, RoutedEventArgs e)
         {
@@ -62,10 +76,6 @@ namespace SQLiteUWPSupport
             });
         }
 
-        private void CreateTrigger(object sender, RoutedEventArgs e)
-        {
-            //conn.Execute("create trigger trigger_name on User After insert");
-        }
 
         private void Query(object sender, RoutedEventArgs e)
         {
@@ -101,7 +111,7 @@ namespace SQLiteUWPSupport
 
             using (SQLite.Net.SQLiteConnection conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path))
             {
-                var existingconact = conn.Query<User>("select * from Students where Id =" + id).FirstOrDefault();
+                var existingconact = conn.Query<User>("select * from User where Id =" + id).FirstOrDefault();
                 return existingconact;
             }
         }

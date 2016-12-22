@@ -38,7 +38,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Id}" />
+                        <!--<TextBlock Text="{Binding Id}" />-->
                         <TextBlock Text="{Binding Username}" />
                         <TextBlock Text="{Binding Password}" />
                     </StackPanel>
