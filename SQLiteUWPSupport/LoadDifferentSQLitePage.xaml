@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="SQLiteUWPSupport.LoadDifferentSQLitePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SQLiteUWPSupport"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image
+            Name="image1"
+            Width="100"
+            Height="100" />
+        <Button Click="Button_Click" Content="click to change sqlite" />
+    </StackPanel>
+</Page>
