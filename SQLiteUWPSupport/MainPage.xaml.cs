@@ -34,6 +34,8 @@ namespace SQLiteUWPSupport
         public MainPage()
         {
             this.InitializeComponent();
+            MyDate date = new Model.MyDate();
+            myDate.DataContext = date;
             CreateDatabase();
             CreateTable();
             
@@ -53,6 +55,18 @@ namespace SQLiteUWPSupport
             conn.CreateTable<User>();
             //get table name
             //string name = conn.Table<User>().Table.TableName;
+        }
+        private void InsetDate(object sender, RoutedEventArgs e)
+        {
+            path = Path.Combine(Windows.Storage.ApplicationData.
+                   Current.LocalFolder.Path, "MyDate.sqlite");
+
+            conn = new SQLite.Net.SQLiteConnection(new
+            SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            conn.CreateTable<MyDate>();
+            conn.Insert(new MyDate() { MyDateTime = myDate.Date.Value.Date });
+
+
         }
 
         private void CreateTrigger()
@@ -185,5 +199,7 @@ namespace SQLiteUWPSupport
                 }
             }
         }
+
+       
     }
 }

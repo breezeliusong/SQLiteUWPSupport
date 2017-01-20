@@ -6,6 +6,9 @@
     xmlns:local="using:SQLiteUWPSupport"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <local:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter" />
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -30,6 +33,8 @@
             <Button Click="Update" Content="Update" />
             <Button Click="Query" Content="Query" />
             <Button Click="CreateTrigger" Content="CreateTrigger" />
+            <Button Click="InsetDate" Content="InsetDate" />
+            <CalendarDatePicker Name="myDate" Date="{Binding MyDateTime}" />
         </StackPanel>
         <ListView
             Name="MyListView"

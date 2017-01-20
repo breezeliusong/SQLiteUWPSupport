@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="LoadDifferentSQLitePage.xaml.cs">
       <DependentUpon>LoadDifferentSQLitePage.xaml</DependentUpon>
     </Compile>
@@ -102,6 +103,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\DataModel.cs" />
+    <Compile Include="Model\MyDate.cs" />
     <Compile Include="Model\PictureModel.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
